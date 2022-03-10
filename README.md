@@ -15,7 +15,7 @@ The purpose of this document is to record and communicate the architecture, proc
 
 |Version|Date|Document|
 |---|---|---|
-|1.0.0|3/10/2022|[Release Notes/Release Notes V1.0.0.md](Release Notes/Release Notes V1.0.0.md)|
+|1.0.0|3/10/2022|<a href="./Release Notes/Release Notes V1.0.0.md">Release Notes/Release Notes V1.0.0.md</a>|
 
 ## Architecture
 
