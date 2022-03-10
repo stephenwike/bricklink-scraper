@@ -1,0 +1,26 @@
+<Configuration>
+  <InventoryFile>Inventory.xml</InventoryFile>
+  <CacheTimeHoursPolicy>24</CacheTimeHoursPolicy>
+  <HtmlLoadTimeMs>600</HtmlLoadTimeMs>
+  <!--Accepted Values are 1 = LowestPrice, 4 = Highest Quantity-->
+  <SortPartsBy>1</SortPartsBy>
+  <ResultsPerPage>100</ResultsPerPage>
+  <MinQuantityPercent>10</MinQuantityPercent>
+  <NumberOfSellers>40</NumberOfSellers>
+  <PreferredSellers>
+    <Seller>MR BrickDesigner</Seller>
+    <Seller>Mini's Bricks</Seller>
+    <Seller>Minifigure Bricks &amp; Pieces</Seller>
+    <Seller>RH BLOCK SHOP</Seller>
+  </PreferredSellers>
+  <IgnoredSellers>
+    <Seller>Family Blocks</Seller>
+    <Seller>Banana Bricks</Seller>
+    <Seller>brixalotl</Seller>
+  </IgnoredSellers>
+  <SellerWeights>
+  	<PricePoint>1.2</PricePoint>
+  	<Quantity>1.5</Quantity>
+    <Rarity>1.9</Rarity>
+  </SellerWeights>
+</Configuration>
