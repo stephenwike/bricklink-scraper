@@ -26,35 +26,37 @@ The purpose of this document is to record and communicate the architecture, proc
 #### Configuration.xml
 
 This xml file defines the values that will configure the application.  This file can be found in the executable directory within the Inputs folder. Any values missing from the configuration file will use defaults instead. Here is a list of configurable values.
-Configuration	Default	Description
-InventoryFile	Inventory.xml	The name of the xml file that contains the inventory.  Must be relative to the ./Inputs/ directory.
-CacheTimeHoursPolicy	24	Defines how many hours from when the cache file was saved that it should still be considered relevant. 
-HtmlLoadTimeMs	600	Delay time between when the browser will navigate to the next part.  Can affect accuracy if the browser navigates away before it can cache results.
-SortPartsBy	1	Enumeration for “Search By” criteria. 1 = Lowest Price, 4 = Highest Quantity. 
-MinQuantityPercent	10	Percentage of the needed quantity of a part that defines the minimum quantity a seller must have to be listed.  
-NumberOfSellers	40	Quantity of sellers to be displayed in the final ./Outputs/Results.csv file.
-PreferredSellers[]	-	An array of preferred seller.  These will be filtered to the top of the sellers list.
- Seller	Empty	The name of the preferred seller.  Must match the name of the seller on the webpage and be in UTF-8.
-IgnoredSellers[]	-	An array of ignored sellers.  The will not be included in the sellers list.
- Seller	Empty	The name of the ignored seller.  Must match the name of the seller on the webpage and be in UTF-8.
-SellerWeights	-	A collection of weights that will be used to determine the success rate a given seller has over the inventory.
- PricePoint	1.2	The influence price has on determining seller success.
- Quantity	1.5	The influence quantity has on determining seller success.
-	1.9	The influence rarity has on determining seller success.
+|Configuration|Default|Description|
+|---|---|---|
+|InventoryFile|Inventory.xml|The name of the xml file that contains the inventory.  Must be relative to the ./Inputs/ directory.|
+|CacheTimeHoursPolicy|24|Defines how many hours from when the cache file was saved that it should still be considered relevant. |
+|HtmlLoadTimeMs|600|Delay time between when the browser will navigate to the next part.  Can affect accuracy if the browser navigates away before it can cache results.|
+|SortPartsBy|1|Enumeration for “Search By” criteria. 1 = Lowest Price, 4 = Highest Quantity. |
+|MinQuantityPercent|10|Percentage of the needed quantity of a part that defines the minimum quantity a seller must have to be listed.  |
+|NumberOfSellers|40|Quantity of sellers to be displayed in the final ./Outputs/Results.csv file.|
+|PreferredSellers[]|-|An array of preferred seller.  These will be filtered to the top of the sellers list.|
+|--> Seller|Empty|The name of the preferred seller.  Must match the name of the seller on the webpage and be in UTF-8.|
+|IgnoredSellers[]|-|An array of ignored sellers.  The will not be included in the sellers list.|
+|--> Seller|Empty|The name of the ignored seller.  Must match the name of the seller on the webpage and be in UTF-8.|
+|SellerWeights|-|A collection of weights that will be used to determine the success rate a given seller has over the inventory.|
+|--> PricePoint|1.2|The influence price has on determining seller success.|
+|--> Quantity|1.5|The influence quantity has on determining seller success.|
+|--> Rariry|1.9|The influence rarity has on determining seller success.|
 
 
 #### Inventory.xml
 
 This is a collection of parts that is required to inform the application of which parts and parameters needed to search for parts.  The name of the document is configurable and should be relative to the executable directory within the Inputs folder.
-Value	Required	Description
-Inventory[]	Yes	An array of all parts that the application will process.
- ItemId	Yes	The part id.
- ItemType	No	The item type.
- Color	Yes	The color code.
- MinQty	Yes	The absolute value of quantity of parts needed.
- MaxPrice	Yes	The average price of the part.
- Remarks	No	Not used at this time.
- Condition	No	Determines whether the part must be new.
+|Value|Required|Description|
+|---|---|---|
+|Inventory[]|Yes|An array of all parts that the application will process.|
+|--> ItemId||Yes|The part id.|
+|--> ItemType|No|The item type.|
+|--> Color|Yes|The color code.|
+|--> MinQty|Yes|The absolute value of quantity of parts needed.|
+|--> MaxPrice|Yes|The average price of the part.|
+|--> Remarks|No|Not used at this time.|
+|--> Condition|No|Determines whether the part must be new.|
 
 > Note: MinQty and MaxPrice are misleading values.  They are outputs from another tool and have been mapped differently within the application.
 
