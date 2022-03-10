@@ -50,7 +50,7 @@ This is a collection of parts that is required to inform the application of whic
 |Value|Required|Description|
 |---|---|---|
 |Inventory[]|Yes|An array of all parts that the application will process.|
-|--> ItemId||Yes|The part id.|
+|--> ItemId|Yes|The part id.|
 |--> ItemType|No|The item type.|
 |--> Color|Yes|The color code.|
 |--> MinQty|Yes|The absolute value of quantity of parts needed.|
