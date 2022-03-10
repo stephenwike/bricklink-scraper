@@ -4,13 +4,11 @@ using System.Diagnostics;
 using BrickLink.Scraper;
 using BrickLink.Scraper.DataStructures;
 using BrickLink.Scraper.Helpers;
-using BrickLink.Scraper.Model.XmlData;
 
 // Deserialize XML
 var deserializer = new XmlDeserializer();
 deserializer.DeserializeConfiguration();
 var inventory = deserializer.DeserializeInventory();
-inventory.Items = inventory.Items?.Take(35).ToList() ?? new List<XmlItem>();
 if (inventory == null) throw new Exception("Inventory cannot be null");
 new InventoryValidator().Validate(inventory);
 
