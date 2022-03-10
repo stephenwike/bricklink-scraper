@@ -19,6 +19,8 @@ The purpose of this document is to record and communicate the architecture, proc
 
 ## Architecture
 
+![Architecture Overview](Diagrams/Overview.png "Overview")
+
 ###	4.1 Inputs
 
 #### Configuration.xml
@@ -54,9 +56,7 @@ Inventory[]	Yes	An array of all parts that the application will process.
  Remarks	No	Not used at this time.
  Condition	No	Determines whether the part must be new.
 
-Note: MinQty and MaxPrice are misleading values.  They are outputs from another tool and have been mapped differently within the application.
-
-
+> Note: MinQty and MaxPrice are misleading values.  They are outputs from another tool and have been mapped differently within the application.
 
 ###	4.2 Cache
 
@@ -74,25 +74,35 @@ This section will define the application and how it works.  Each major method wi
 
 The application begins by taking the configuration and inventory xml files and running them through XML Deserialize methods.  The configuration will fall back to default values when there are errors parsing the configuration file.  The inventory is validated and will return errors if the xml is incorrectly formatted or is missing required fields.
  
+![Architecture XML Deserialization](Diagrams/XMLDeserialization.png "XML Deserialization")
+
 #### Part File Store
 
 This manages the application cache by cleaning up expired html files, loading html files that match the parts in the inventory and runs selenium chromedriver on the remaining parts and saves the generated html files into the cache.  What the chromedriver returns will depend on the provided URI which is generated using a URI builder.  Configurable values include the cache expiry time in hours, the results per page, the category by which to sort, the minimum quantity percent based on parts needed, and the HTML load time.
  
+![Architecture Part File Store](Diagrams/PartFileStore.png "Part File Store")
+
 #### Web Scraper
 
 The web scraper is a simple pass-through method that takes an HTML file and using HTMLAgilityPack to scrape the html for desired data, including description, each seller, the seller’s quantity, and price.  This is the most brittle component of the application because any changes BrickLink makes to their DOM will potentially break the pattern that the scraper is currently programmed to use.
 
-#### Data Manager
+![Architecture Web Scraper](Diagrams/WebScaper.png "Web Scraper")
 
+#### Data Manager
+s
 The application uses the data manager twice, the first time is only to relay the part number, color id, and quantity needed to the data model that gets used for creating the final output. The second time the data manager gets called is to put the scrape data returned by the web scraper and populate the same data model.
 
 #### Store Weigher
 
 Using the data model after being populated by the web scraper, the store weigher calculates the scrape data against metrics defined by the system and multiplies each metric by an associated weight.  The resulting scores are sorted by highest value.  Preferred sellers are shifted to the top of the list but are still sorted by their score. Ignored sellers are removed prior to running metrics.  Configurable values Include price point, quantity, and rarity for the seller weights, preferred sellers, ignored sellers, and the total number of sellers.
 
+![Architecture Store Weigher](Diagrams/StoreWeigher.png "Store Weigher")
+
 #### CSV Builder and Printer
 
 The CSV Builder takes the data model and the list of weighted sellers and organizes the data into a table format.  The table format object is taken by the CSV Printer which populates a file with the table data.
+
+![Architecture CSV Builder and Printer](Diagrams/CsvBuilder.png "CSV Builder and Printer")
  
 ###	4.5 Data
 
