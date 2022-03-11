@@ -1,4 +1,5 @@
 using System.Web;
+using BrickLink.Scraper.Exceptions;
 
 namespace BrickLink.Scraper.Helpers;
 
@@ -7,9 +8,9 @@ public class TextHelper
     public static string GetPartId(string? partId, string? color)
     {
         if (string.IsNullOrWhiteSpace(partId))
-            throw new Exception("ValueHelper.GetPartId, partId cannot be null or whitespace.");
+            throw new LogException("ValueHelper.GetPartId, partId cannot be null or whitespace.");
         if (string.IsNullOrWhiteSpace(color))
-            throw new Exception("ValueHelper.GetPartId, color cannot be null or whitespace.");
+            throw new LogException("ValueHelper.GetPartId, color cannot be null or whitespace.");
         return $"{partId}_{color}";
     }
     

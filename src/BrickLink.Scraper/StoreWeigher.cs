@@ -1,4 +1,5 @@
 using BrickLink.Scraper.DataStructures;
+using BrickLink.Scraper.Exceptions;
 using BrickLink.Scraper.Helpers;
 using BrickLink.Scraper.Model;
 
@@ -21,7 +22,7 @@ public class StoreWeigher
         var scores = rankingsList.Select(seller =>
         {
             if (seller.Value?.UniqueItems == null)
-                throw new Exception("StoreWeigher.FilterSellersByRanking, UniqueItems should not be null");
+                throw new LogException("StoreWeigher.FilterSellersByRanking, UniqueItems should not be null");
             
             return new SellerScore(seller.Key)
             {
@@ -48,7 +49,7 @@ public class StoreWeigher
         DataSingleton.Instance.ItemsData.ForEach(part =>
         {
             if (part.SellerItems == null)
-                throw new Exception("StoreWeigher.CreateSellerRankings, ItemsData[x].SellerItems cannot be null.");
+                throw new LogException("StoreWeigher.CreateSellerRankings, ItemsData[x].SellerItems cannot be null.");
 
             part.SellerItems.Keys.ToList().ForEach(key =>
             {
@@ -72,7 +73,7 @@ public class StoreWeigher
                     {
                         var ranking = new SellerRanking(key)
                         {
-                            Quantity = quantity ?? throw new Exception("StoreWeigher.CreateSellerRankings, quantity cannot be null."),
+                            Quantity = quantity ?? throw new LogException("StoreWeigher.CreateSellerRankings, quantity cannot be null."),
                             Affordability = affordability,
                         };
                         ranking.UniqueItems.Add(uniqueId);

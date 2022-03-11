@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Text;
+using BrickLink.Scraper.Exceptions;
 using BrickLink.Scraper.Helpers;
 using BrickLink.Scraper.Model.TableData;
 
@@ -32,7 +33,7 @@ public class CsvPrinter
         }
         catch (Exception)
         {
-            throw new Exception($"Failed to write CSV document.  Make sure you don't have {Constants.OutputFile} open in directory {outputPath}.");
+            throw new LogException($"Failed to write CSV document.  Make sure you don't have {Constants.OutputFile} open in directory {outputPath}.");
         }
     }
 

@@ -1,4 +1,5 @@
 using System.Text;
+using BrickLink.Scraper.Exceptions;
 using BrickLink.Scraper.Model.XmlData;
 
 namespace BrickLink.Scraper;
@@ -36,7 +37,7 @@ public class InventoryValidator
         {
             var result = errors.Select(error => error.BuildErrorString()).ToArray();
             var mergeResult = string.Join("", result);
-            throw new NullReferenceException(mergeResult);
+            throw new LogException(mergeResult);
         }
     }
 }

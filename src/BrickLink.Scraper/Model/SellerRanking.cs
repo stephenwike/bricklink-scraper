@@ -1,10 +1,12 @@
+using BrickLink.Scraper.Exceptions;
+
 namespace BrickLink.Scraper.Model;
 
 public class SellerRanking
 {
     public SellerRanking(string id)
     {
-        Id = id ?? throw new Exception("SellerRanking.constructor cannot be null");
+        Id = id ?? throw new LogException("SellerRanking.constructor cannot be null");
         UniqueItems = new HashSet<string>();
     }
     

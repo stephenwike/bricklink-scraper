@@ -1,3 +1,5 @@
+using BrickLink.Scraper.DataStructures;
+using BrickLink.Scraper.Exceptions;
 using BrickLink.Scraper.Model;
 using BrickLink.Scraper.Model.XmlData;
 using OpenQA.Selenium;
@@ -16,7 +18,8 @@ public class PartFileStore : IDisposable
         _lazyDriver = new Lazy<IWebDriver>(() =>
         {
             var chromeOptions = new ChromeOptions();
-            //chromeOptions.AddArguments("headless");
+            if (Configuration.HeadlessBrowser)
+                chromeOptions.AddArguments("headless");
 
             for (var index = 0; index < Constants.DriverVersions.Length; ++index)
             {
@@ -33,14 +36,14 @@ public class PartFileStore : IDisposable
                 }
             }
 
-            throw new Exception("Chrome with supported version is not installed on this machine.");
+            throw new LogException("Chrome with supported version is not installed on this machine.");
         });
     }
     
     public List<string> SaveFiles(List<XmlItem>? items)
     {
         if (items == null)
-            throw new Exception("DataMapper.CreateItemData, List<XmlItems> cannot be null.");
+            throw new LogException("DataMapper.CreateItemData, List<XmlItems> cannot be null.");
         
         // Create html files directory if needed.
         var path = Path.Combine(Environment.CurrentDirectory, Constants.HtmlFilesDirectory);
@@ -55,13 +58,11 @@ public class PartFileStore : IDisposable
         var files = new DirectoryInfo(path).GetFiles("*.html").Select(file => file.Name).ToList();
         
         // Save all files not already saved within the policy creation date.
-        return items.Select(item =>
+        return items!.Select(item =>
         {
-            if (item == null)
-                throw new Exception("A null item was detected in the inventory.  Null items are not allowed.");
-            var filename = $"{item.ItemId} {item.Color} {item.Condition} {item.ItemType} {item?.MaxPrice?.Replace('.', '_')}.html";
+            var filename = $"{item.ItemId} {item.Color} {item.Condition} {item.ItemType} {item.MaxPrice?.Replace('.', '_')}.html";
 
-            if (item?.ItemId != null && files.Contains(filename))
+            if (item.ItemId != null && files.Contains(filename))
             {
                 return files[files.IndexOf(filename)];
             }
@@ -72,7 +73,7 @@ public class PartFileStore : IDisposable
             
             // Fetch HTML from URL with chromedriver.
             Driver.Navigate().GoToUrl(url);
-            System.Threading.Thread.Sleep(Configuration.HtmlLoadTimeMs);
+            Thread.Sleep(Configuration.HtmlLoadTimeMs);
             var html = Driver.PageSource;
             
             // Write HTML to cache file.

@@ -1,4 +1,5 @@
 using BrickLink.Scraper.DataStructures;
+using BrickLink.Scraper.Exceptions;
 using BrickLink.Scraper.Helpers;
 using BrickLink.Scraper.Model;
 
@@ -19,7 +20,7 @@ public class WeightsCalculator
             .Sum(item =>
             {
                 if (item?.SellerItems == null)
-                    throw new Exception("WeightsCalculator.CalculateTotalQuantityScore, item.SellerItems cannot be null");
+                    throw new LogException("WeightsCalculator.CalculateTotalQuantityScore, item.SellerItems cannot be null");
                 double needed = item.QuantityNeeded ?? 0;
                 double has = ValueHelper.ParseQuantity(item.SellerItems[seller.Key].Quantity);
 
@@ -37,7 +38,7 @@ public class WeightsCalculator
             .Sum(item =>
             {
                 if (item?.SellerItems == null)
-                    throw new Exception("WeightsCalculator.CalculateTotalQuantityScore, item.SellerItems cannot be null");
+                    throw new LogException("WeightsCalculator.CalculateTotalQuantityScore, item.SellerItems cannot be null");
                 double needed = item.QuantityNeeded ?? 0;
                 double has = ValueHelper.ParseQuantity(item.SellerItems[seller.Key].Quantity);
 
@@ -50,7 +51,7 @@ public class WeightsCalculator
     
     public double? CalculatePricePointScore(double? affordability)
     {
-        if (affordability == null) throw new Exception("WeightsCalculator.CalculatePricePointScore, affordability cannot be null,");
+        if (affordability == null) throw new LogException("WeightsCalculator.CalculatePricePointScore, affordability cannot be null,");
         if (affordability >= 2.5) return 0;
         if (affordability <= 0.5) return 100;
 

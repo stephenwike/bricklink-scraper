@@ -34,4 +34,7 @@ public  class XmlConfiguration
 
     [XmlElement(ElementName = "InventoryFile")]
     public string InventoryFile = "Inventory.xml";
+    
+    [XmlElement(ElementName = "HeadlessBrowser")]
+    public string HeadlessBrowser = "true";
 }

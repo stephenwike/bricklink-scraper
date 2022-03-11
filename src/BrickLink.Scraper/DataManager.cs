@@ -1,5 +1,6 @@
 using BrickLink.Scraper.DataStructures;
 using BrickLink.Scraper.Entities;
+using BrickLink.Scraper.Exceptions;
 using BrickLink.Scraper.Helpers;
 using BrickLink.Scraper.Model;
 using BrickLink.Scraper.Model.XmlData;
@@ -11,21 +12,15 @@ public class DataManager
     public void CreateItemData(List<XmlItem>? items)
     {
         if (items == null)
-            throw new Exception("DataMapper.CreateItemData, List<XmlItems> cannot be null.");
+            throw new LogException("DataMapper.CreateItemData, List<XmlItems> cannot be null.");
         
-        var itemsData = items.Select(item =>
+        var itemsData = items.Select(item => new ItemData()
         {
-            if (item == null)
-                throw new Exception("Null item detected while creating the items data collection.");
-            
-            return new ItemData()
-            {
-                PartId = item.ItemId ?? throw new Exception("DataMapper.CreateItemData, ItemId cannot be null or empty."),
-                Color = item.Color ?? throw new Exception("DataMapper.CreateItemData, Color cannot be null or empty."),
-                MaxPrice = item.MaxPrice ?? throw new Exception("DataMapper.CreateItemData, MaxPrice cannot be null or empty."),
-                QuantityNeeded = ValueHelper.GetQuantityNeeded(item.MinQuantity),
-                Description = string.Empty,
-            };
+            PartId = item.ItemId ?? throw new LogException("DataMapper.CreateItemData, ItemId cannot be null or empty."),
+            Color = item.Color ?? throw new LogException("DataMapper.CreateItemData, Color cannot be null or empty."),
+            MaxPrice = item.MaxPrice ?? throw new LogException("DataMapper.CreateItemData, MaxPrice cannot be null or empty."),
+            QuantityNeeded = ValueHelper.GetQuantityNeeded(item.MinQuantity),
+            Description = string.Empty,
         }).ToList();
 
         DataSingleton.Instance.ItemsData = itemsData;

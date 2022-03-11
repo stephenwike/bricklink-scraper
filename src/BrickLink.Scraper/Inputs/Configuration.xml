@@ -7,16 +7,16 @@
   <ResultsPerPage>100</ResultsPerPage>
   <MinQuantityPercent>10</MinQuantityPercent>
   <NumberOfSellers>40</NumberOfSellers>
+  <HeadlessBrowser>true</HeadlessBrowser>
   <PreferredSellers>
-    <Seller>MR BrickDesigner</Seller>
-    <Seller>Mini's Bricks</Seller>
-    <Seller>Minifigure Bricks &amp; Pieces</Seller>
-    <Seller>RH BLOCK SHOP</Seller>
+    <Seller>Brock's Bricks</Seller>
+    <Seller>StudBee</Seller>
   </PreferredSellers>
   <IgnoredSellers>
-    <Seller>Family Blocks</Seller>
-    <Seller>Banana Bricks</Seller>
-    <Seller>brixalotl</Seller>
+    <Seller>BBB Brick Store</Seller>
+    <Seller>Bricktropolis</Seller>
+    <Seller>Music City Bricks</Seller>
+    <Seller>Utica Brix</Seller>
   </IgnoredSellers>
   <SellerWeights>
   	<PricePoint>1.2</PricePoint>

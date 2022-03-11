@@ -1,10 +1,12 @@
+using BrickLink.Scraper.Exceptions;
+
 namespace BrickLink.Scraper.Model;
 
 public class SellerScore
 {
     public SellerScore(string? id)
     {
-        Id = id ?? throw new Exception("SellerScore.constructor, Id cannot be null.");
+        Id = id ?? throw new LogException("SellerScore.constructor, Id cannot be null.");
     }
     
     public string Id { get; set; }

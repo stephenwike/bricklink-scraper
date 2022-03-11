@@ -9,4 +9,7 @@ public static class Constants
     public const string InputsDirectory = "Inputs";
     public const string OutputsDirectory = "Outputs";
     public static string OutputFile = "Results.csv";
+    public static string LogDirectory = "Log";
+    public static string LogFile = "info.log";
+    public static string ErrorLogFile = "error.log";
 }

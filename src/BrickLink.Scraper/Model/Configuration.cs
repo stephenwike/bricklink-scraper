@@ -57,4 +57,9 @@ public static class Configuration
     /// The name of the XML file containing the parts inventory.
     /// </summary>
     public static string InventoryFile = "Inventory.xml";
+
+    /// <summary>
+    /// Set whether the ChromeDriver will run in headless mode.
+    /// </summary>
+    public static bool HeadlessBrowser = true;
 }

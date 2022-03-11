@@ -34,6 +34,7 @@ This xml file defines the values that will configure the application.  This file
 |SortPartsBy|1|Enumeration for “Search By” criteria. 1 = Lowest Price, 4 = Highest Quantity. |
 |MinQuantityPercent|10|Percentage of the needed quantity of a part that defines the minimum quantity a seller must have to be listed.  |
 |NumberOfSellers|40|Quantity of sellers to be displayed in the final ./Outputs/Results.csv file.|
+|HeadlessBrowser|true|Determines if the ChromeDriver will run in headless mode.|
 |PreferredSellers[]|-|An array of preferred seller.  These will be filtered to the top of the sellers list.|
 |--> Seller|Empty|The name of the preferred seller.  Must match the name of the seller on the webpage and be in UTF-8.|
 |IgnoredSellers[]|-|An array of ignored sellers.  The will not be included in the sellers list.|
@@ -55,7 +56,6 @@ This is a collection of parts that is required to inform the application of whic
 |--> Color|Yes|The color code.|
 |--> MinQty|Yes|The absolute value of quantity of parts needed.|
 |--> MaxPrice|Yes|The average price of the part.|
-|--> Remarks|No|Not used at this time.|
 |--> Condition|No|Determines whether the part must be new.|
 
 > Note: MinQty and MaxPrice are misleading values.  They are outputs from another tool and have been mapped differently within the application.

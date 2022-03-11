@@ -1,4 +1,5 @@
 using System.Text;
+using BrickLink.Scraper.Exceptions;
 using BrickLink.Scraper.Helpers;
 using BrickLink.Scraper.Model;
 using BrickLink.Scraper.Model.XmlData;
@@ -21,13 +22,13 @@ public class UrlBuilder
     public string Build(XmlItem? item)
     {
         if (item == null)
-            throw new Exception("An item evaluated to null while parsing the XML.  Null values are not allowed.");
+            throw new LogException("An item evaluated to null while parsing the XML.  Null values are not allowed.");
         
         if (string.IsNullOrWhiteSpace(item.ItemId))
-            throw new Exception("An item failed while parsing the XML. An item does not contain an ItemId.");
+            throw new LogException("An item failed while parsing the XML. An item does not contain an ItemId.");
 
         if (string.IsNullOrWhiteSpace(item.Color))
-            throw new Exception($"An item failed while parsing the XML. Item {item.ItemId}, does not contain a Color.");
+            throw new LogException($"An item failed while parsing the XML. Item {item.ItemId}, does not contain a Color.");
 
         var maxPrice = ValueHelper.ParsePrice(item.MaxPrice) * 2.5;
         var minQuantity = ValueHelper.GetMinQuantityFromPercent(item.MinQuantity);

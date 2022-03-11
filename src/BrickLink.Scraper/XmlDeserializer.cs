@@ -1,4 +1,6 @@
 using System.Xml.Serialization;
+using BrickLink.Scraper.DataStructures;
+using BrickLink.Scraper.Exceptions;
 using BrickLink.Scraper.Model;
 using BrickLink.Scraper.Model.XmlData;
 
@@ -8,15 +10,13 @@ public class XmlDeserializer
 {
     public XmlInventory DeserializeInventory()
     {
-        
-        
         XmlSerializer serializer = new XmlSerializer(typeof(XmlInventory));
         var currentDirectory = Environment.CurrentDirectory;
         var directory = Path.Combine(currentDirectory, Constants.InputsDirectory);
         var filePath = Path.Combine(directory, Configuration.InventoryFile);
 
         if (!File.Exists(filePath))
-            throw new Exception($"Could not find file {Configuration.InventoryFile} in location {directory}.");
+            throw new LogException($"Could not find file {Configuration.InventoryFile} in location {directory}.");
 
         XmlInventory? inventory = null;
         using (FileStream fileStream = new FileStream(filePath, FileMode.Open)) 
@@ -25,10 +25,10 @@ public class XmlDeserializer
         }
 
         if (inventory?.Items == null)
-            throw new Exception($"Inventory is empty.  Make sure XML_Inventory is populated and correctly formatted.");
+            throw new LogException($"Inventory is empty.  Make sure XML_Inventory is populated and correctly formatted.");
         
-        if (!inventory.Items.Any())
-            throw new Exception($"Inventory is empty.  Make sure XML_Inventory is populated.");
+        if (inventory?.Items == null || !inventory.Items.Any())
+            throw new LogException($"Inventory is empty.  Make sure XML_Inventory is populated.");
 
         return inventory;
     }
@@ -36,13 +36,17 @@ public class XmlDeserializer
     public void DeserializeConfiguration()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(XmlConfiguration));
-        var filepath = Path.Combine(Environment.CurrentDirectory, Constants.InputsDirectory, Constants.XmlConfigurationFile);
+        var filepath = Path.Combine(Environment.CurrentDirectory, Constants.InputsDirectory);
+        var file = Path.Combine(filepath, Constants.XmlConfigurationFile);
 
-        if (!File.Exists(filepath))
-            return; // If there is no configuration.txt, configurations have defaults.
+        if (!File.Exists(file))
+        {
+            Logger.Log($"No '{Constants.XmlConfigurationFile}' found in path '{filepath}'. Using configuration defaults.");
+            return;
+        }
 
         XmlConfiguration? xmlConfig = null;
-        using (FileStream fileStream = new FileStream(filepath, FileMode.Open)) 
+        using (FileStream fileStream = new FileStream(file, FileMode.Open)) 
         {
             xmlConfig = serializer.Deserialize(fileStream) as XmlConfiguration;
         }
@@ -55,6 +59,7 @@ public class XmlDeserializer
             Configuration.ResultsPerPage = xmlConfig?.ResultsPerPage ?? 100;
             Configuration.SortPartBy = xmlConfig?.SortPartsBy ?? 1;
             Configuration.MinQuantityPercent = xmlConfig?.MinQuantityPercent ?? 10;
+            Configuration.HeadlessBrowser = xmlConfig?.HeadlessBrowser.ToLower() != "false";
             Configuration.PreferredSellers = xmlConfig?.PreferredSellers?.Seller ?? new List<string>();
             Configuration.IgnoredSellers = xmlConfig?.IgnoredSellers?.Seller ?? new List<string>();
             Configuration.SellerWeights = xmlConfig?.SellerWeights ?? new XmlSellerWeights
