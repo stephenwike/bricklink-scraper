@@ -41,7 +41,7 @@ public class CsvPrinter
     {
         parts.ForEach(part =>
         {
-            var staticRow = $"{part.PartId},{part.Color},{part.Description},{part.QuantityNeeded},{part.QuantityFound}";
+            var staticRow = $"{part.PartId},{part.Color},{part.Description},{part.QuantityNeeded},{part.QuantityFound},{part.MaxPrice}";
             _builder.Append(staticRow);
             
             part.Sellers.ForEach(seller =>
@@ -57,7 +57,7 @@ public class CsvPrinter
 
     private void PrintSecondaryHeader(int count)
     {
-        var headerString = $",,,,";
+        var headerString = $",,,,,";
         _builder.Append(headerString);
         
         for (var i = 0; i < count; ++i)
@@ -69,7 +69,7 @@ public class CsvPrinter
 
     private void PrintHeader(List<string> sellers)
     {
-        var headerString = $"P Id,Color,Desc,Need,Found";
+        var headerString = $"P Id,Color,Desc,Need,Found,Max $";
         _builder.Append(headerString);
         
         sellers.ForEach(seller =>

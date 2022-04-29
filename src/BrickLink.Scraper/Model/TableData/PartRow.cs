@@ -10,4 +10,5 @@ public class PartRow
     public int QuantityNeeded { get; set; } = 0;
     public int QuantityFound { get; set; } = 0;
     public List<SellerItemEntity> Sellers { get; set; } = new List<SellerItemEntity>();
+    public double MaxPrice { get; set; }
 }

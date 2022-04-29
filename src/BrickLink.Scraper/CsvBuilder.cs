@@ -20,6 +20,7 @@ public class CsvBuilder
             part.Description = TextHelper.GetDescription(item.Description ?? string.Empty);
             part.PartId = item.PartId;
             part.QuantityNeeded = item.QuantityNeeded ?? 0;
+            part.MaxPrice = double.Parse(item.MaxPrice ?? "0");
             
             // Get Dynamic Row Data
             sellers.ForEach(seller =>
