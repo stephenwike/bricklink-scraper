@@ -5,7 +5,7 @@ public static class Constants
     public const string XmlConfigurationFile = "Configuration.xml";
     public const string HtmlFilesDirectory = "HTML_Files";
     public const string DriversDirectory = "drivers";
-    public static readonly string[] DriverVersions = { "99.0.4844.35", "98.0.4758.102", "97.0.4692.71" };
+    public static readonly string[] DriverVersions = { "99.0.4844.35", "98.0.4758.102", "97.0.4692.71", "100.0.4896.60", "101.0.4951.41" };
     public const string InputsDirectory = "Inputs";
     public const string OutputsDirectory = "Outputs";
     public static string OutputFile = "Results.csv";

@@ -7,7 +7,7 @@ The purpose of this document is to record and communicate the architecture, proc
 
 ## Prerequisites
 
-*   Requires this installation of Chrome browser 97.0.4692.71, 98.0.4758.102, or 99.0.4844.35.  
+*   Requires this installation of Chrome browser 97.0.4692.71, 98.0.4758.102, 99.0.4844.35, 100.0.4896.60, or 101.0.4951.41.  
 *   Requires user access to all files and folders within the executable directory.
 *   Requires the [.NET Runtime 6.0.3](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
 
