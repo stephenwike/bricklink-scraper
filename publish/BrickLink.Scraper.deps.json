@@ -1,0 +1,162 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "BrickLink.Scraper/1.0.0": {
+        "dependencies": {
+          "HtmlAgilityPack": "1.11.42",
+          "Microsoft.Extensions.FileProviders.Physical": "7.0.0-preview.1.22076.8",
+          "Selenium.WebDriver": "4.1.0"
+        },
+        "runtime": {
+          "BrickLink.Scraper.dll": {}
+        }
+      },
+      "HtmlAgilityPack/1.11.42": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.42.0",
+            "fileVersion": "1.11.42.0"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Abstractions/7.0.0-preview.1.22076.8": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "7.0.0-preview.1.22076.8"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.7608"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Physical/7.0.0-preview.1.22076.8": {
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Abstractions": "7.0.0-preview.1.22076.8",
+          "Microsoft.Extensions.FileSystemGlobbing": "7.0.0-preview.1.22076.8",
+          "Microsoft.Extensions.Primitives": "7.0.0-preview.1.22076.8"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.FileProviders.Physical.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.7608"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/7.0.0-preview.1.22076.8": {
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.FileSystemGlobbing.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.7608"
+          }
+        }
+      },
+      "Microsoft.Extensions.Primitives/7.0.0-preview.1.22076.8": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "7.0.0-preview.1.22076.8"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Primitives.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.7608"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
+      },
+      "Selenium.WebDriver/4.1.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "runtime": {
+          "lib/net5.0/WebDriver.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/7.0.0-preview.1.22076.8": {
+        "runtime": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.7608"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BrickLink.Scraper/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HtmlAgilityPack/1.11.42": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LDc1bEfF14EY2DZzak4xvzWvbpNXK3vi1u0KQbBpLUN4+cx/VrvXhgCAMSJhSU5vz0oMfW9JZIR20vj/PkDHPA==",
+      "path": "htmlagilitypack/1.11.42",
+      "hashPath": "htmlagilitypack.1.11.42.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/7.0.0-preview.1.22076.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RTaPi990xVhuArJ9YgT60o8bBfZr4sCuZ8HepHGQ6HFewFC3JKrz3E3QFhnSPQiR99LGbJ6ahzeJBUr0LN0wkg==",
+      "path": "microsoft.extensions.fileproviders.abstractions/7.0.0-preview.1.22076.8",
+      "hashPath": "microsoft.extensions.fileproviders.abstractions.7.0.0-preview.1.22076.8.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Physical/7.0.0-preview.1.22076.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5zI4gqJCXJyagYZ7pCHqqk+8Z0p3GUv/BnZKKh80DAAps0IvfBE2H6XQaUvL75LvdpblFOwwUxZN/+8RKUrvlA==",
+      "path": "microsoft.extensions.fileproviders.physical/7.0.0-preview.1.22076.8",
+      "hashPath": "microsoft.extensions.fileproviders.physical.7.0.0-preview.1.22076.8.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileSystemGlobbing/7.0.0-preview.1.22076.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8K7VZqZ/z7+cBgofJByuKNhOIxS3lFxExmnJxV/lO6hKAe3rXe4JWG/WWkAFkQbXqgsWt25klQaXExEY7uv7KQ==",
+      "path": "microsoft.extensions.filesystemglobbing/7.0.0-preview.1.22076.8",
+      "hashPath": "microsoft.extensions.filesystemglobbing.7.0.0-preview.1.22076.8.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Primitives/7.0.0-preview.1.22076.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1LUdAOSWD5OD8r1krRLEFNx3k69vSCBD9ZKDhKpVD5/8jqeAUUxhGTNlp2nrilWV7/G1yr6YL7QYwC+d9GMRkw==",
+      "path": "microsoft.extensions.primitives/7.0.0-preview.1.22076.8",
+      "hashPath": "microsoft.extensions.primitives.7.0.0-preview.1.22076.8.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "Selenium.WebDriver/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-d4smisz4a/wJCM2TzkKTl+BLfvZUTvaobhKElDfCVZlvY8ThsC8VAoBNWTlg1H/GGzIP//yVGko/W0FILTgkYA==",
+      "path": "selenium.webdriver/4.1.0",
+      "hashPath": "selenium.webdriver.4.1.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/7.0.0-preview.1.22076.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-b2OHecZUPNE1oe0wEGsT+UWoaRLGWRMl2TKSiI8wAfYVhrPXKq7LeYwJUtMaTG7CG6gWI6IXgmL8pkQEYZYO8A==",
+      "path": "system.runtime.compilerservices.unsafe/7.0.0-preview.1.22076.8",
+      "hashPath": "system.runtime.compilerservices.unsafe.7.0.0-preview.1.22076.8.nupkg.sha512"
+    }
+  }
+}

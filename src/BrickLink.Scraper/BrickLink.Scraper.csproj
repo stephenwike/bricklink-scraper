@@ -15,6 +15,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Update="drivers\100.0.4896.60\chromedriver.exe">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="drivers\101.0.4951.41\chromedriver.exe">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
       <None Update="TestingHTML\p1.html">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
