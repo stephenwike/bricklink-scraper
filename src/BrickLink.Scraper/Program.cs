@@ -11,7 +11,6 @@ try
     var deserializer = new XmlDeserializer();
     deserializer.DeserializeConfiguration();
     var inventory = deserializer.DeserializeInventory() ?? throw new LogException("Inventory cannot be null");
-    inventory.Items = inventory.Items?.Take(5).ToList();
     new InventoryValidator().Validate(inventory);
 
     // Create ItemData
