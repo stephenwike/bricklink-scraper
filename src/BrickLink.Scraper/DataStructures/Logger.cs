@@ -9,11 +9,14 @@ public static class Logger
     {
         var root = Environment.CurrentDirectory;
         var filePath = Path.Combine(root, Constants.LogDirectory);
-        
+        Directory.CreateDirectory(filePath);
+
         var file = Path.Combine(filePath, Constants.LogFile);
+        if (!File.Exists(file)) File.CreateText(file);
         Writer = File.AppendText(file);
 
         var errorFile = Path.Combine(filePath, Constants.ErrorLogFile);
+        if (!File.Exists(errorFile)) File.CreateText(errorFile);
         ErrorWriter = File.AppendText(errorFile);
     }
 

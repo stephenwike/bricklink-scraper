@@ -1,9 +1,10 @@
-using BrickLink.Scraper.DataStructures;
 using BrickLink.Scraper.Exceptions;
 using BrickLink.Scraper.Model;
 using BrickLink.Scraper.Model.XmlData;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace BrickLink.Scraper;
 
@@ -21,22 +22,15 @@ public class PartFileStore : IDisposable
             if (Configuration.HeadlessBrowser)
                 chromeOptions.AddArguments("headless");
 
-            for (var index = 0; index < Constants.DriverVersions.Length; ++index)
+            new DriverManager().SetUpDriver(new ChromeConfig());
+            var chromeDriver = new ChromeDriver(chromeOptions);
+            
+            if (chromeDriver == null)
             {
-                try
-                {
-                    var path = Path.Combine(Environment.CurrentDirectory, Constants.DriversDirectory, Constants.DriverVersions[index]);
-                    var chromeDriver = new ChromeDriver(path, chromeOptions);
-                    IsLoaded = true;
-                    return chromeDriver;
-                }
-                catch (Exception)
-                {
-                    continue;
-                }
-            }
+                throw new LogException("Chrome with supported version is not installed on this machine.");
 
-            throw new LogException("Chrome with supported version is not installed on this machine.");
+            }
+            return chromeDriver;
         });
     }
     

@@ -3,7 +3,6 @@ using BrickLink.Scraper;
 using BrickLink.Scraper.DataStructures;
 using BrickLink.Scraper.Exceptions;
 using BrickLink.Scraper.Helpers;
-using System.Linq;
 
 try
 {
